@@ -1,7 +1,6 @@
 import { ComponentProps, FC } from 'react';
 import { motion } from 'framer-motion';
 import Head from 'next/head';
-import { GridItem } from '../GridItem';
 
 const variants = {
   hidden: { opacity: 0, x: 0, y: 20 },
@@ -39,7 +38,6 @@ export const LayoutContent: FC<LayoutContentProps> = ({
           </Head>
         )}
         {children}
-        <GridItem.Style />
       </>
     </motion.div>
   );

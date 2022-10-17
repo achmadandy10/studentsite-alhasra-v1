@@ -7,5 +7,5 @@ export * from './Footer';
 export * from './Font';
 export * from './Paragraph';
 export * from './Section';
-export * from './GridItem';
 export * from './Card';
+export * from './Sidebar';
