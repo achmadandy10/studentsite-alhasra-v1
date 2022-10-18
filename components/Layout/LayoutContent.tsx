@@ -28,7 +28,6 @@ export const LayoutContent: FC<LayoutContentProps> = ({
       }}
       style={{
         position: 'relative',
-        marginTop: '1.75rem',
       }}
     >
       <>

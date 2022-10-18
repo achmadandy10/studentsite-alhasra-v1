@@ -5,7 +5,7 @@ import { Layout } from '../components';
 import { NextPageWithLayout } from './_app';
 
 const Home: NextPageWithLayout = (): JSX.Element => {
-  return <Container maxWidth={'container.lg'}>test</Container>;
+  return <Container maxWidth={'container.xl'}>test</Container>;
 };
 
 Home.getLayout = function getLayout(page: ReactElement, router: Router) {

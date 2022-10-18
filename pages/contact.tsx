@@ -12,7 +12,7 @@ import { NextPageWithLayout } from './_app';
 const Contact: NextPageWithLayout = () => {
   return (
     <Layout.Content title={'Kontak'}>
-      <Container maxWidth={'container.lg'}>
+      <Container maxWidth={'container.xl'}>
         <Heading
           as={'h3'}
           fontSize={20}

@@ -25,7 +25,7 @@ const FooterComponent: FC<ComponentProps<'div'>> = ({ ...props }) => {
       {...props}
     >
       <Container
-        maxWidth={'container.lg'}
+        maxWidth={'container.xl'}
         display={{ md: 'flex' }}
         alignItems={{ md: 'center' }}
         justifyContent={{ md: 'space-between' }}

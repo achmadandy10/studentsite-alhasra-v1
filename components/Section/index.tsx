@@ -3,12 +3,12 @@ import { motion } from 'framer-motion';
 import type { ComponentProps, FC } from 'react';
 
 const StyledDiv = chakra(motion.div, {
-  shouldForwardProp: props => {
-    return shouldForwardProp(props) || props === 'transition';
+  shouldForwardProp: prop => {
+    return shouldForwardProp(prop) || prop === 'transition';
   },
 });
 
-type SectionComponentProps = ComponentProps<'div'> & {
+type SectionComponentProps = ComponentProps<typeof StyledDiv> & {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   delay: any;
 };
@@ -16,6 +16,7 @@ type SectionComponentProps = ComponentProps<'div'> & {
 export const Section: FC<SectionComponentProps> = ({
   children,
   delay = 0,
+  ...props
 }): JSX.Element => {
   return (
     <StyledDiv
@@ -23,6 +24,7 @@ export const Section: FC<SectionComponentProps> = ({
       animate={{ y: 0, opacity: 1 }}
       transition={{ duration: '0.8', delay }}
       marginBottom={6}
+      {...props}
     >
       {children}
     </StyledDiv>

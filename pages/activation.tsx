@@ -22,7 +22,7 @@ import { NextPageWithLayout } from './_app';
 const Activation: NextPageWithLayout = () => {
   return (
     <Layout.Content title={'Aktivasi'}>
-      <Container maxWidth={'container.lg'}>
+      <Container maxWidth={'container.xl'}>
         <Heading
           as={'h3'}
           fontSize={20}

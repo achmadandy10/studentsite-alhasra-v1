@@ -40,7 +40,7 @@ export const NavbarComponent: FC<NavbarComponentProps> = ({
       <Container
         display={'flex'}
         padding={2}
-        maxWidth={'container.lg'}
+        maxWidth={'container.xl'}
         flexWrap={'wrap'}
         alignItems={'center'}
         justifyContent={'space-between'}
@@ -65,16 +65,16 @@ export const NavbarComponent: FC<NavbarComponentProps> = ({
             Home
           </NavbarLinkItem>
           <NavbarLinkItem href={'/news'} path={path}>
-            News
+            Berita
           </NavbarLinkItem>
           <NavbarLinkItem href={'/activation'} path={path}>
-            Activation
+            Aktivasi
           </NavbarLinkItem>
           <NavbarLinkItem href={'/login'} path={path}>
             Login
           </NavbarLinkItem>
           <NavbarLinkItem href={'/contact'} path={path}>
-            Contact
+            Kontak
           </NavbarLinkItem>
         </Stack>
 
