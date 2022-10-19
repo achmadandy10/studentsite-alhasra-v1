@@ -1,135 +1,256 @@
+/* eslint-disable react/no-children-prop */
 import {
-  Badge,
   Box,
   Button,
   Container,
   FormControl,
-  FormLabel,
   Heading,
   Input,
-  SimpleGrid,
-  Text,
+  Grid,
   Link as LinkChakra,
   useColorModeValue,
-  Divider,
+  Spinner,
+  Flex,
+  Text,
+  InputGroup,
+  InputLeftElement,
+  SimpleGrid,
+  GridItem,
 } from '@chakra-ui/react';
+import { NextPage } from 'next';
+import Image from 'next/image';
 import Link from 'next/link';
-import { Router } from 'next/router';
-import { ReactElement } from 'react';
-import { Layout, Section } from '../components';
-import { NextPageWithLayout } from './_app';
+import {
+  IoCalendarOutline,
+  IoIdCardOutline,
+  IoLocationOutline,
+  IoLockClosedOutline,
+  IoMailOutline,
+  IoPersonOutline,
+  IoPhonePortraitOutline,
+} from 'react-icons/io5';
+import { Layout, Section, ThemeToggleButton } from '../components';
+import { useActivation } from '../hooks';
 
-const Activation: NextPageWithLayout = () => {
+const Activation: NextPage = () => {
+  const { form, handleChange, handleSubmit, isSubmit } = useActivation();
+
   return (
-    <Layout.Content title={'Aktivasi'}>
-      <Container maxWidth={'container.xl'}>
-        <Heading
-          as={'h3'}
-          fontSize={20}
-          marginBottom={4}
-          borderRadius={'lg'}
-          padding={5}
-          background={useColorModeValue('embersGray', 'embersGray')}
-          color={'whiteAlpha.900'}
+    <Layout.Content title={'Activation'}>
+      <Container paddingX={0} maxWidth={'container.2xl'} height={'100vh'}>
+        <Grid
+          templateColumns={{ base: 'repeat(1, 1fr)', md: '30% 70%' }}
+          height={'full'}
         >
-          Aktivasi
-        </Heading>
-
-        <SimpleGrid columns={[1, 1, 2]} gap={6}>
+          <Container
+            height={'full'}
+            maxWidth={'container.2xl'}
+            background={useColorModeValue('#FEFEFE', '#0F0E0E')}
+            display={{ base: 'none', md: 'block' }}
+          >
+            <Flex
+              height={'full'}
+              alignItems={'center'}
+              justifyContent={'center'}
+            >
+              <Image
+                src={'/images/svg/undraw_scrum_board_re_wk7v.svg'}
+                alt={'Activation svg'}
+                width={250}
+                height={250}
+              />
+            </Flex>
+          </Container>
           <Section delay={0}>
-            <FormControl>
-              <Box>
+            <Container
+              display={'flex'}
+              flexDirection={'column'}
+              justifyContent={'center'}
+              maxWidth={'3xl'}
+              height={'full'}
+              paddingY={4}
+            >
+              <Flex alignItems={'center'} justifyContent={'space-between'}>
                 <Box>
-                  <FormLabel>NIS</FormLabel>
-                  <Input variant={'form-input'} />
+                  <Image
+                    src={'/images/logo.png'}
+                    alt={'Logo Al-Hasra'}
+                    width={50}
+                    height={50}
+                  />
                 </Box>
-                <Box marginTop={4}>
-                  <FormLabel>Tempat Lahir</FormLabel>
-                  <Input variant={'form-input'} />
-                </Box>
-                <Box marginTop={4}>
-                  <FormLabel>Tanggal Lahir</FormLabel>
-                  <Input variant={'form-input'} />
-                </Box>
-                <Box marginTop={4}>
-                  <FormLabel>Email</FormLabel>
-                  <Input variant={'form-input'} />
-                </Box>
-                <Box marginTop={4}>
-                  <FormLabel>Nomor Handphone</FormLabel>
-                  <Input variant={'form-input'} />
-                </Box>
-                <Box marginTop={4}>
-                  <FormLabel>Username</FormLabel>
-                  <Input variant={'form-input'} />
-                </Box>
-                <Box marginTop={4}>
-                  <FormLabel>Password</FormLabel>
-                  <Input variant={'form-input'} />
-                </Box>
-              </Box>
-              <Box
+                <ThemeToggleButton />
+              </Flex>
+              <Heading
+                as={'h3'}
+                fontSize={'2xl'}
                 marginTop={4}
-                display={'flex'}
-                flexDirection={'column'}
-                gap={4}
+                borderRadius={'lg'}
               >
-                <Button
-                  width={'100%'}
-                  background={'oceanWavesNormal'}
-                  _hover={{
-                    background: 'oceanWavesBold',
-                    _dark: { background: 'oceanWavesLight' },
-                  }}
-                  color={useColorModeValue('#f0e7db', '#202023')}
-                  type={'submit'}
-                >
-                  Daftar
-                </Button>
-              </Box>
-            </FormControl>
+                Membuat akun studentsite!
+              </Heading>
+              <Text marginTop={2} borderRadius={'lg'}>
+                Lorem ipsum dolor, sit amet consectetur adipisicing elit. Error,
+                officia!
+              </Text>
+              <FormControl
+                marginTop={10}
+                as={'form'}
+                onSubmit={handleSubmit}
+                method={'POST'}
+              >
+                <SimpleGrid columns={[1, 1, 2]} gap={4}>
+                  <GridItem>
+                    <InputGroup>
+                      <InputLeftElement
+                        pointerEvents={'none'}
+                        children={<IoIdCardOutline color={'gray.300'} />}
+                      />
+                      <Input
+                        id={'nis'}
+                        placeholder={'Masukkan NIS anda'}
+                        name={'nis'}
+                        onChange={handleChange}
+                        value={form.nis}
+                        variant={'form-input'}
+                      />
+                    </InputGroup>
+                  </GridItem>
+                  <GridItem>
+                    <InputGroup>
+                      <InputLeftElement
+                        pointerEvents={'none'}
+                        children={<IoPhonePortraitOutline color={'gray.300'} />}
+                      />
+                      <Input
+                        id={'phoneNumber'}
+                        type={'text'}
+                        placeholder={'Masukkan nomor handphone anda'}
+                        name={'phoneNumber'}
+                        onChange={handleChange}
+                        value={form.phoneNumber}
+                        variant={'form-input'}
+                      />
+                    </InputGroup>
+                  </GridItem>
+                  <GridItem colSpan={{ base: 1, md: 2 }}>
+                    <InputGroup>
+                      <InputLeftElement
+                        pointerEvents={'none'}
+                        children={<IoMailOutline color={'gray.300'} />}
+                      />
+                      <Input
+                        id={'email'}
+                        type={'email'}
+                        placeholder={'Masukkan email anda'}
+                        name={'email'}
+                        onChange={handleChange}
+                        value={form.email}
+                        variant={'form-input'}
+                      />
+                    </InputGroup>
+                  </GridItem>
+                  <GridItem>
+                    <InputGroup>
+                      <InputLeftElement
+                        pointerEvents={'none'}
+                        children={<IoLocationOutline color={'gray.300'} />}
+                      />
+                      <Input
+                        id={'placeBorn'}
+                        placeholder={'Masukkan tempat lahir anda'}
+                        name={'placeBorn'}
+                        onChange={handleChange}
+                        value={form.placeBorn}
+                        variant={'form-input'}
+                      />
+                    </InputGroup>
+                  </GridItem>
+                  <GridItem>
+                    <InputGroup>
+                      <InputLeftElement
+                        pointerEvents={'none'}
+                        children={<IoCalendarOutline color={'gray.300'} />}
+                      />
+                      <Input
+                        id={'dateBorn'}
+                        type={'dateBord'}
+                        placeholder={'Masukkan tanggal lahir anda'}
+                        name={'dateBorn'}
+                        onChange={handleChange}
+                        value={form.dateBorn}
+                        variant={'form-input'}
+                      />
+                    </InputGroup>
+                  </GridItem>
+                  <GridItem>
+                    <InputGroup>
+                      <InputLeftElement
+                        pointerEvents={'none'}
+                        children={<IoPersonOutline color={'gray.300'} />}
+                      />
+                      <Input
+                        id={'username'}
+                        placeholder={'Masukkan username'}
+                        name={'username'}
+                        onChange={handleChange}
+                        value={form.username}
+                        variant={'form-input'}
+                      />
+                    </InputGroup>
+                  </GridItem>
+                  <GridItem>
+                    <InputGroup>
+                      <InputLeftElement
+                        pointerEvents={'none'}
+                        children={<IoLockClosedOutline color={'gray.300'} />}
+                      />
+                      <Input
+                        id={'password'}
+                        type={'password'}
+                        placeholder={'Masukkan kata sandi'}
+                        name={'password'}
+                        onChange={handleChange}
+                        value={form.password}
+                        variant={'form-input'}
+                      />
+                    </InputGroup>
+                  </GridItem>
+                </SimpleGrid>
+                <Box marginTop={10}>
+                  <Button
+                    width={'100%'}
+                    background={'oceanWavesNormal'}
+                    _hover={{
+                      background: 'oceanWavesBold',
+                      _dark: { background: 'oceanWavesLight' },
+                    }}
+                    color={useColorModeValue('#f0e7db', '#202023')}
+                    type={isSubmit ? 'button' : 'submit'}
+                  >
+                    {isSubmit ? <Spinner /> : 'Daftar'}
+                  </Button>
+                  <Box
+                    marginTop={4}
+                    display={'flex'}
+                    alignItems={'center'}
+                    justifyContent={'center'}
+                  >
+                    <Text>
+                      Sudah mempunyai akun?{' '}
+                      <Link href={'/login'}>
+                        <LinkChakra>Masuk</LinkChakra>
+                      </Link>
+                    </Text>
+                  </Box>
+                </Box>
+              </FormControl>
+            </Container>
           </Section>
-          <Section delay={0}>
-            <Text>
-              <Badge colorScheme={'yellow'} textTransform={'capitalize'}>
-                Perhatian!
-              </Badge>{' '}
-              Untuk dapat melakukan aktivasi akun student site anda, silahkan
-              isi data pada kolom disamping ini.
-              <br />
-              <br />
-              Pastikan data yang anda masukkan sesuai dengan data yang anda
-              berikan ketika melakukan pendaftaran mahasiswa baru. Perubahan
-              data dapat dilakukan pada saat isi KRS atau Daftar Ulang.
-              <br />
-              <br />
-              Pastikan alamat email yang dimasukkan aktif, karena apabila anda
-              lupa password maka informasi nya akan dikirimkan melalui alamat
-              email tersebut.
-            </Text>
-            <Divider
-              width={'100%'}
-              marginY={{ base: 6, md: 8 }}
-              marginX={{ md: 'auto' }}
-              borderColor={useColorModeValue('gray.900', 'whiteAlpha.900')}
-            />
-            <Text>
-              Kesulitan dalam melakukan aktivasi ? silahkan klik link berikut
-              ini :{' '}
-              <Link href={''}>
-                <LinkChakra>Help Desk</LinkChakra>
-              </Link>
-              .
-            </Text>
-          </Section>
-        </SimpleGrid>
+        </Grid>
       </Container>
     </Layout.Content>
   );
-};
-
-Activation.getLayout = function getLayout(page: ReactElement, router: Router) {
-  return <Layout.Main router={router}>{page}</Layout.Main>;
 };
 
 export default Activation;

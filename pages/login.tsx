@@ -1,41 +1,57 @@
+/* eslint-disable react/no-children-prop */
 import {
   Box,
   Button,
   Container,
   FormControl,
-  FormLabel,
   Heading,
   Input,
   SimpleGrid,
   Link as LinkChakra,
   useColorModeValue,
-  Alert,
-  AlertIcon,
   Spinner,
   Flex,
+  Text,
+  InputGroup,
+  InputLeftElement,
+  useToast,
+  useMediaQuery,
 } from '@chakra-ui/react';
+import { NextPage } from 'next';
 import Image from 'next/image';
 import Link from 'next/link';
-import { Layout, Section } from '../components';
+import { useEffect } from 'react';
+import { IoLockClosedOutline, IoPersonOutline } from 'react-icons/io5';
+import { Layout, Section, ThemeToggleButton } from '../components';
 import { useLogin } from '../hooks';
-import { NextPageWithLayout } from './_app';
 
-const Login: NextPageWithLayout = () => {
+const Login: NextPage = () => {
   const { form, handleChange, handleSubmit, errors, isSubmit } = useLogin();
+  const toast = useToast();
+  const [isLargeThan768] = useMediaQuery('(min-width: 768px)');
+
+  useEffect(() => {
+    if ((errors.username || errors.password) !== undefined) {
+      const id = 'login-failed';
+      if (!toast.isActive(id)) {
+        toast({
+          id,
+          title: 'Username / Kata sandi salah',
+          status: 'error',
+          position: isLargeThan768 ? 'bottom-right' : 'bottom',
+        });
+      }
+    }
+  }, [errors, toast, isLargeThan768]);
 
   return (
     <Layout.Content title={'Login'}>
       <Container paddingX={0} maxWidth={'container.2xl'} height={'100vh'}>
-        <SimpleGrid
-          columns={[1, 1, 2]}
-          height={'full'}
-          border={1}
-          borderColor={'red.500'}
-        >
+        <SimpleGrid columns={[1, 1, 2]} height={'full'}>
           <Container
             height={'full'}
             maxWidth={'container.2xl'}
-            background={'white'}
+            background={useColorModeValue('#FEFEFE', '#0F0E0E')}
             display={{ base: 'none', md: 'block' }}
           >
             <Flex
@@ -58,77 +74,80 @@ const Login: NextPageWithLayout = () => {
               justifyContent={'center'}
               height={'full'}
             >
-              <Box
-                display={{ base: 'flex', md: 'block' }}
-                alignItems={'center'}
-                justifyContent={'center'}
-              >
-                <Image
-                  src={'/images/logo.png'}
-                  alt={'Logo Al-Hasra'}
-                  width={50}
-                  height={50}
-                />
-              </Box>
+              <Flex alignItems={'center'} justifyContent={'space-between'}>
+                <Box>
+                  <Image
+                    src={'/images/logo.png'}
+                    alt={'Logo Al-Hasra'}
+                    width={50}
+                    height={50}
+                  />
+                </Box>
+                <ThemeToggleButton />
+              </Flex>
               <Heading
                 as={'h3'}
                 fontSize={'2xl'}
                 marginTop={4}
                 borderRadius={'lg'}
               >
-                Login
+                Hai, selamat datang kembali!
               </Heading>
-              <Heading
-                as={'h4'}
-                fontSize={'md'}
-                marginTop={2}
-                borderRadius={'lg'}
-              >
-                Login
-              </Heading>
+              <Text marginTop={2} borderRadius={'lg'}>
+                Lorem ipsum dolor sit amet.
+              </Text>
               <FormControl
-                marginTop={4}
+                marginTop={10}
                 as={'form'}
                 onSubmit={handleSubmit}
                 method={'POST'}
               >
-                {(errors.username || errors.password) && (
-                  <Alert status="error" marginBottom={4} borderRadius={'lg'}>
-                    <AlertIcon />
-                    Username / Password salah.
-                  </Alert>
-                )}
                 <Box>
                   <Box>
-                    <FormLabel htmlFor={'username'}>Username</FormLabel>
-                    <Input
-                      id={'username'}
-                      placeholder={'Masukkan username'}
-                      name={'username'}
-                      onChange={handleChange}
-                      value={form.username}
-                      variant={'form-input'}
-                    />
+                    <InputGroup>
+                      <InputLeftElement
+                        pointerEvents={'none'}
+                        children={<IoPersonOutline color={'gray.300'} />}
+                      />
+                      <Input
+                        id={'username'}
+                        placeholder={'Masukkan username'}
+                        name={'username'}
+                        onChange={handleChange}
+                        value={form.username}
+                        variant={'form-input'}
+                      />
+                    </InputGroup>
                   </Box>
                   <Box marginTop={4}>
-                    <FormLabel htmlFor={'password'}>Password</FormLabel>
-                    <Input
-                      id={'password'}
-                      type={'password'}
-                      placeholder={'Masukkan password'}
-                      name={'password'}
-                      onChange={handleChange}
-                      value={form.password}
-                      variant={'form-input'}
-                    />
+                    <InputGroup>
+                      <InputLeftElement
+                        pointerEvents={'none'}
+                        children={<IoLockClosedOutline color={'gray.300'} />}
+                      />
+                      <Input
+                        id={'password'}
+                        type={'password'}
+                        placeholder={'Masukkan kata sandi'}
+                        name={'password'}
+                        onChange={handleChange}
+                        value={form.password}
+                        variant={'form-input'}
+                      />
+                    </InputGroup>
+                  </Box>
+                  <Box
+                    marginTop={4}
+                    display={'flex'}
+                    alignItems={'center'}
+                    justifyContent={'end'}
+                  >
+                    <Link href={'/forgot-password'}>
+                      <LinkChakra>Lupa kata sandi?</LinkChakra>
+                    </Link>
                   </Box>
                 </Box>
-                <Box
-                  marginTop={4}
-                  display={'flex'}
-                  flexDirection={'column'}
-                  gap={4}
-                >
+                <Box marginTop={10}>
                   <Button
                     width={'100%'}
                     background={'oceanWavesNormal'}
@@ -139,11 +158,21 @@ const Login: NextPageWithLayout = () => {
                     color={useColorModeValue('#f0e7db', '#202023')}
                     type={isSubmit ? 'button' : 'submit'}
                   >
-                    {isSubmit ? <Spinner /> : 'Login'}
+                    {isSubmit ? <Spinner /> : 'Masuk'}
                   </Button>
-                  <Link href={'/forgot-password'}>
-                    <LinkChakra>Forgot Password?</LinkChakra>
-                  </Link>
+                  <Box
+                    marginTop={4}
+                    display={'flex'}
+                    alignItems={'center'}
+                    justifyContent={'center'}
+                  >
+                    <Text>
+                      Belum mempunyai akun?{' '}
+                      <Link href={'/activation'}>
+                        <LinkChakra>Daftar</LinkChakra>
+                      </Link>
+                    </Text>
+                  </Box>
                 </Box>
               </FormControl>
             </Container>
