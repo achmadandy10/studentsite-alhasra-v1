@@ -16,12 +16,17 @@ import {
   InputLeftElement,
   SimpleGrid,
   GridItem,
+  InputRightElement,
+  FormErrorMessage,
 } from '@chakra-ui/react';
 import { NextPage } from 'next';
 import Image from 'next/image';
 import Link from 'next/link';
+import { useState } from 'react';
 import {
   IoCalendarOutline,
+  IoEyeOffOutline,
+  IoEyeOutline,
   IoIdCardOutline,
   IoLocationOutline,
   IoLockClosedOutline,
@@ -33,7 +38,10 @@ import { Layout, Section, ThemeToggleButton } from '../components';
 import { useActivation } from '../hooks';
 
 const Activation: NextPage = () => {
-  const { form, handleChange, handleSubmit, isSubmit } = useActivation();
+  const { form, handleChange, handleSubmit, errors, isSubmit } =
+    useActivation();
+  const [show, setShow] = useState(false);
+  const handleClick = () => setShow(!show);
 
   return (
     <Layout.Content title={'Activation'}>
@@ -58,6 +66,7 @@ const Activation: NextPage = () => {
                 alt={'Activation svg'}
                 width={250}
                 height={250}
+                priority
               />
             </Flex>
           </Container>
@@ -98,6 +107,7 @@ const Activation: NextPage = () => {
                 as={'form'}
                 onSubmit={handleSubmit}
                 method={'POST'}
+                isInvalid
               >
                 <SimpleGrid columns={[1, 1, 2]} gap={4}>
                   <GridItem>
@@ -115,6 +125,9 @@ const Activation: NextPage = () => {
                         variant={'form-input'}
                       />
                     </InputGroup>
+                    {errors.nis && (
+                      <FormErrorMessage>{errors.nis}</FormErrorMessage>
+                    )}
                   </GridItem>
                   <GridItem>
                     <InputGroup>
@@ -132,6 +145,9 @@ const Activation: NextPage = () => {
                         variant={'form-input'}
                       />
                     </InputGroup>
+                    {errors.phoneNumber && (
+                      <FormErrorMessage>{errors.phoneNumber}</FormErrorMessage>
+                    )}
                   </GridItem>
                   <GridItem colSpan={{ base: 1, md: 2 }}>
                     <InputGroup>
@@ -149,6 +165,9 @@ const Activation: NextPage = () => {
                         variant={'form-input'}
                       />
                     </InputGroup>
+                    {errors.email && (
+                      <FormErrorMessage>{errors.email}</FormErrorMessage>
+                    )}
                   </GridItem>
                   <GridItem>
                     <InputGroup>
@@ -165,6 +184,9 @@ const Activation: NextPage = () => {
                         variant={'form-input'}
                       />
                     </InputGroup>
+                    {errors.placeBorn && (
+                      <FormErrorMessage>{errors.placeBorn}</FormErrorMessage>
+                    )}
                   </GridItem>
                   <GridItem>
                     <InputGroup>
@@ -174,7 +196,7 @@ const Activation: NextPage = () => {
                       />
                       <Input
                         id={'dateBorn'}
-                        type={'dateBord'}
+                        type={'date'}
                         placeholder={'Masukkan tanggal lahir anda'}
                         name={'dateBorn'}
                         onChange={handleChange}
@@ -182,6 +204,9 @@ const Activation: NextPage = () => {
                         variant={'form-input'}
                       />
                     </InputGroup>
+                    {errors.dateBorn && (
+                      <FormErrorMessage>{errors.dateBorn}</FormErrorMessage>
+                    )}
                   </GridItem>
                   <GridItem>
                     <InputGroup>
@@ -198,6 +223,9 @@ const Activation: NextPage = () => {
                         variant={'form-input'}
                       />
                     </InputGroup>
+                    {errors.username && (
+                      <FormErrorMessage>{errors.username}</FormErrorMessage>
+                    )}
                   </GridItem>
                   <GridItem>
                     <InputGroup>
@@ -207,14 +235,22 @@ const Activation: NextPage = () => {
                       />
                       <Input
                         id={'password'}
-                        type={'password'}
+                        type={show ? 'text' : 'password'}
                         placeholder={'Masukkan kata sandi'}
                         name={'password'}
                         onChange={handleChange}
                         value={form.password}
                         variant={'form-input'}
                       />
+                      <InputRightElement width="4.5rem">
+                        <Button h="1.75rem" size="sm" onClick={handleClick}>
+                          {show ? <IoEyeOutline /> : <IoEyeOffOutline />}
+                        </Button>
+                      </InputRightElement>
                     </InputGroup>
+                    {errors.password && (
+                      <FormErrorMessage>{errors.password}</FormErrorMessage>
+                    )}
                   </GridItem>
                 </SimpleGrid>
                 <Box marginTop={10}>

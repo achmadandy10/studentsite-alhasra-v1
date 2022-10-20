@@ -61,7 +61,7 @@ export const useActivation = () => {
       formData.append('password', form.password);
 
       toast({
-        title: 'Berhasil login!',
+        title: 'Berhasil daftar!',
         status: 'success',
         isClosable: true,
       });

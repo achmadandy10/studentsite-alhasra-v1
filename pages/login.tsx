@@ -16,12 +16,18 @@ import {
   InputLeftElement,
   useToast,
   useMediaQuery,
+  InputRightElement,
 } from '@chakra-ui/react';
 import { NextPage } from 'next';
 import Image from 'next/image';
 import Link from 'next/link';
-import { useEffect } from 'react';
-import { IoLockClosedOutline, IoPersonOutline } from 'react-icons/io5';
+import { useEffect, useState } from 'react';
+import {
+  IoEyeOffOutline,
+  IoEyeOutline,
+  IoLockClosedOutline,
+  IoPersonOutline,
+} from 'react-icons/io5';
 import { Layout, Section, ThemeToggleButton } from '../components';
 import { useLogin } from '../hooks';
 
@@ -29,6 +35,8 @@ const Login: NextPage = () => {
   const { form, handleChange, handleSubmit, errors, isSubmit } = useLogin();
   const toast = useToast();
   const [isLargeThan768] = useMediaQuery('(min-width: 768px)');
+  const [show, setShow] = useState(false);
+  const handleClick = () => setShow(!show);
 
   useEffect(() => {
     if ((errors.username || errors.password) !== undefined) {
@@ -64,6 +72,7 @@ const Login: NextPage = () => {
                 alt={'Login svg'}
                 width={350}
                 height={350}
+                priority
               />
             </Flex>
           </Container>
@@ -127,13 +136,18 @@ const Login: NextPage = () => {
                       />
                       <Input
                         id={'password'}
-                        type={'password'}
+                        type={show ? 'text' : 'password'}
                         placeholder={'Masukkan kata sandi'}
                         name={'password'}
                         onChange={handleChange}
                         value={form.password}
                         variant={'form-input'}
                       />
+                      <InputRightElement width="4.5rem">
+                        <Button h="1.75rem" size="sm" onClick={handleClick}>
+                          {show ? <IoEyeOutline /> : <IoEyeOffOutline />}
+                        </Button>
+                      </InputRightElement>
                     </InputGroup>
                   </Box>
                   <Box

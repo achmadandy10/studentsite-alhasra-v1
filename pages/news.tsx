@@ -13,20 +13,183 @@ import { NextPageWithLayout } from './_app';
 const News: NextPageWithLayout = () => {
   return (
     <Layout.Content title={'Berita'}>
-      <Container maxWidth={'container.xl'}>
-        <Heading
-          as={'h3'}
-          fontSize={20}
-          marginBottom={4}
-          borderRadius={'lg'}
-          padding={5}
-          background={useColorModeValue('embersGray', 'embersGray')}
-          color={'whiteAlpha.900'}
-        >
+      <Container maxWidth={'container.xl'} marginTop={4}>
+        <Heading as={'h3'} fontSize={'4xl'}>
           Berita
         </Heading>
 
-        <SimpleGrid columns={[1, 2, 3]} gap={6}>
+        <SimpleGrid columns={[1, 2, 4]} gap={6} marginTop={4}>
+          <Section delay={0}>
+            <Card imgSrc={'/images/dummy/dummy-news.jpg'} imgAlt={'Dummy Logo'}>
+              <Heading
+                as={'h5'}
+                fontSize={'xl'}
+                fontWeight={'bold'}
+                letterSpacing={'tight'}
+              >
+                Berita 1
+              </Heading>
+              <Text
+                fontWeight={'normal'}
+                color={useColorModeValue('gray.700', 'gray.400')}
+              >
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Quod
+                iure, distinctio cupiditate enim laudantium beatae.
+              </Text>
+            </Card>
+          </Section>
+          <Section delay={0}>
+            <Card imgSrc={'/images/dummy/dummy-news.jpg'} imgAlt={'Dummy Logo'}>
+              <Heading
+                as={'h5'}
+                fontSize={'xl'}
+                fontWeight={'bold'}
+                letterSpacing={'tight'}
+              >
+                Berita 1
+              </Heading>
+              <Text
+                fontWeight={'normal'}
+                color={useColorModeValue('gray.700', 'gray.400')}
+              >
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Quod
+                iure, distinctio cupiditate enim laudantium beatae.
+              </Text>
+            </Card>
+          </Section>
+          <Section delay={0}>
+            <Card imgSrc={'/images/dummy/dummy-news.jpg'} imgAlt={'Dummy Logo'}>
+              <Heading
+                as={'h5'}
+                fontSize={'xl'}
+                fontWeight={'bold'}
+                letterSpacing={'tight'}
+              >
+                Berita 1
+              </Heading>
+              <Text
+                fontWeight={'normal'}
+                color={useColorModeValue('gray.700', 'gray.400')}
+              >
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Quod
+                iure, distinctio cupiditate enim laudantium beatae.
+              </Text>
+            </Card>
+          </Section>
+          <Section delay={0}>
+            <Card imgSrc={'/images/dummy/dummy-news.jpg'} imgAlt={'Dummy Logo'}>
+              <Heading
+                as={'h5'}
+                fontSize={'xl'}
+                fontWeight={'bold'}
+                letterSpacing={'tight'}
+              >
+                Berita 1
+              </Heading>
+              <Text
+                fontWeight={'normal'}
+                color={useColorModeValue('gray.700', 'gray.400')}
+              >
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Quod
+                iure, distinctio cupiditate enim laudantium beatae.
+              </Text>
+            </Card>
+          </Section>
+          <Section delay={0}>
+            <Card imgSrc={'/images/dummy/dummy-news.jpg'} imgAlt={'Dummy Logo'}>
+              <Heading
+                as={'h5'}
+                fontSize={'xl'}
+                fontWeight={'bold'}
+                letterSpacing={'tight'}
+              >
+                Berita 1
+              </Heading>
+              <Text
+                fontWeight={'normal'}
+                color={useColorModeValue('gray.700', 'gray.400')}
+              >
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Quod
+                iure, distinctio cupiditate enim laudantium beatae.
+              </Text>
+            </Card>
+          </Section>
+          <Section delay={0}>
+            <Card imgSrc={'/images/dummy/dummy-news.jpg'} imgAlt={'Dummy Logo'}>
+              <Heading
+                as={'h5'}
+                fontSize={'xl'}
+                fontWeight={'bold'}
+                letterSpacing={'tight'}
+              >
+                Berita 1
+              </Heading>
+              <Text
+                fontWeight={'normal'}
+                color={useColorModeValue('gray.700', 'gray.400')}
+              >
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Quod
+                iure, distinctio cupiditate enim laudantium beatae.
+              </Text>
+            </Card>
+          </Section>
+          <Section delay={0}>
+            <Card imgSrc={'/images/dummy/dummy-news.jpg'} imgAlt={'Dummy Logo'}>
+              <Heading
+                as={'h5'}
+                fontSize={'xl'}
+                fontWeight={'bold'}
+                letterSpacing={'tight'}
+              >
+                Berita 1
+              </Heading>
+              <Text
+                fontWeight={'normal'}
+                color={useColorModeValue('gray.700', 'gray.400')}
+              >
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Quod
+                iure, distinctio cupiditate enim laudantium beatae.
+              </Text>
+            </Card>
+          </Section>
+          <Section delay={0}>
+            <Card imgSrc={'/images/dummy/dummy-news.jpg'} imgAlt={'Dummy Logo'}>
+              <Heading
+                as={'h5'}
+                fontSize={'xl'}
+                fontWeight={'bold'}
+                letterSpacing={'tight'}
+              >
+                Berita 1
+              </Heading>
+              <Text
+                fontWeight={'normal'}
+                color={useColorModeValue('gray.700', 'gray.400')}
+              >
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Quod
+                iure, distinctio cupiditate enim laudantium beatae.
+              </Text>
+            </Card>
+          </Section>
+          <Section delay={0}>
+            <Card imgSrc={'/images/dummy/dummy-news.jpg'} imgAlt={'Dummy Logo'}>
+              <Heading
+                as={'h5'}
+                fontSize={'xl'}
+                fontWeight={'bold'}
+                letterSpacing={'tight'}
+              >
+                Berita 1
+              </Heading>
+              <Text
+                fontWeight={'normal'}
+                color={useColorModeValue('gray.700', 'gray.400')}
+              >
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Quod
+                iure, distinctio cupiditate enim laudantium beatae.
+              </Text>
+            </Card>
+          </Section>
           <Section delay={0}>
             <Card imgSrc={'/images/dummy/dummy-news.jpg'} imgAlt={'Dummy Logo'}>
               <Heading
