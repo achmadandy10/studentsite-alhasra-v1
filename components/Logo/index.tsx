@@ -2,6 +2,7 @@ import { Text } from '@chakra-ui/react';
 import styled from '@emotion/styled';
 import Image from 'next/image';
 import Link from 'next/link';
+import Img from '../../media/png/logo.png';
 
 const LogoBox = styled.span`
   font-weight: bold;
@@ -14,8 +15,6 @@ const LogoBox = styled.span`
 `;
 
 export const Logo = (): JSX.Element => {
-  const Img = '/images/logo.png';
-
   return (
     <Link href={'/'}>
       <a>

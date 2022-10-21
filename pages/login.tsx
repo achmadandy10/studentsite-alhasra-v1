@@ -30,6 +30,7 @@ import {
 } from 'react-icons/io5';
 import { Layout, Section, ThemeToggleButton } from '../components';
 import { useLogin } from '../hooks';
+import LoginSVG from '../media/svg/undraw_scrum_board_re_wk7v.svg';
 
 const Login: NextPage = () => {
   const { form, handleChange, handleSubmit, errors, isSubmit } = useLogin();
@@ -68,7 +69,7 @@ const Login: NextPage = () => {
               justifyContent={'center'}
             >
               <Image
-                src={'/images/svg/undraw_scrum_board_re_wk7v.svg'}
+                src={LoginSVG}
                 alt={'Login svg'}
                 width={350}
                 height={350}

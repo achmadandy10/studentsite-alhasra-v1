@@ -9,6 +9,7 @@ import Image from 'next/image';
 import { FC } from 'react';
 import { IoChevronForward, IoChevronBack } from 'react-icons/io5';
 import { useSidebarContext } from './SidebarContext';
+import Logo from '../../media/png/logo.png';
 
 export const SidebarHeader: FC = () => {
   const { isClosed, setIsClosed } = useSidebarContext();
@@ -17,7 +18,7 @@ export const SidebarHeader: FC = () => {
     <Box as={'header'} position={'relative'}>
       <Flex alignItems={'center'}>
         <Flex alignItems={'center'} justifyContent={'center'} minWidth={'60px'}>
-          <Image src={'/images/logo.png'} alt={'Logo'} width={40} height={40} />
+          <Image src={Logo} alt={'Logo'} width={40} height={40} />
         </Flex>
 
         <Flex

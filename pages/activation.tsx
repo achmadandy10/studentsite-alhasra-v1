@@ -36,6 +36,7 @@ import {
 } from 'react-icons/io5';
 import { Layout, Section, ThemeToggleButton } from '../components';
 import { useActivation } from '../hooks';
+import ActivationSVG from '../media/svg/undraw_scrum_board_re_wk7v.svg';
 
 const Activation: NextPage = () => {
   const { form, handleChange, handleSubmit, errors, isSubmit } =
@@ -62,7 +63,7 @@ const Activation: NextPage = () => {
               justifyContent={'center'}
             >
               <Image
-                src={'/images/svg/undraw_scrum_board_re_wk7v.svg'}
+                src={ActivationSVG}
                 alt={'Activation svg'}
                 width={250}
                 height={250}

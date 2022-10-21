@@ -9,3 +9,5 @@ export * from './Paragraph';
 export * from './Section';
 export * from './Card';
 export * from './Sidebar';
+export * from './HotlineNews';
+export * from './EmptyData';

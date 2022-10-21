@@ -14,6 +14,7 @@ import { FooterLink } from './FooterLink';
 import { FooterLinkGroup } from './FooterLinkGroup';
 import { FooterTitle } from './FooterTitle';
 import { IoLogoFacebook, IoLogoInstagram } from 'react-icons/io5';
+import Logo from '../../media/png/logo.png';
 
 const FooterComponent: FC<ComponentProps<'div'>> = ({ ...props }) => {
   return (
@@ -39,7 +40,7 @@ const FooterComponent: FC<ComponentProps<'div'>> = ({ ...props }) => {
           >
             <Box>
               <FooterBrand
-                src={'/images/logo.png'}
+                src={Logo}
                 alt={'Logo'}
                 width={50}
                 height={50}
