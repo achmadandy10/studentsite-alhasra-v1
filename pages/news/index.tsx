@@ -24,9 +24,6 @@ const News: NextPageWithLayout = ({
   dataHotline,
   dataNews,
 }: InferGetServerSidePropsType<typeof getServerSideProps>) => {
-  console.log(dataHotline);
-  console.log(dataNews);
-
   return (
     <Layout.Content title={'Berita'}>
       <Container maxWidth={'container.xl'} marginTop={4}>

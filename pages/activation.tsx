@@ -37,6 +37,7 @@ import {
 import { Layout, Section, ThemeToggleButton } from '../components';
 import { useActivation } from '../hooks';
 import ActivationSVG from '../media/svg/undraw_scrum_board_re_wk7v.svg';
+import LogoSVG from '../media/png/logo.png';
 
 const Activation: NextPage = () => {
   const { form, handleChange, handleSubmit, errors, isSubmit } =
@@ -83,7 +84,7 @@ const Activation: NextPage = () => {
               <Flex alignItems={'center'} justifyContent={'space-between'}>
                 <Box>
                   <Image
-                    src={'/images/logo.png'}
+                    src={LogoSVG}
                     alt={'Logo Al-Hasra'}
                     width={50}
                     height={50}
