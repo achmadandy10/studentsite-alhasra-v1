@@ -7,7 +7,7 @@ import {
   useColorModeValue,
 } from '@chakra-ui/react';
 import axios from 'axios';
-import { GetServerSideProps, InferGetServerSidePropsType } from 'next';
+import { GetStaticProps, InferGetStaticPropsType } from 'next';
 import { Router } from 'next/router';
 import { ReactElement } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
@@ -23,7 +23,7 @@ import { NextPageWithLayout } from '../_app';
 const News: NextPageWithLayout = ({
   dataHotline,
   dataNews,
-}: InferGetServerSidePropsType<typeof getServerSideProps>) => {
+}: InferGetStaticPropsType<typeof getStaticProps>) => {
   return (
     <Layout.Content title={'Berita'}>
       <Container maxWidth={'container.xl'} marginTop={4}>
@@ -83,11 +83,8 @@ News.getLayout = function getLayout(page: ReactElement, router: Router) {
 
 export default News;
 
-export const getServerSideProps: GetServerSideProps = async () => {
-  const res = await axios.get(
-    'https://studentsite-alhasra-v1.vercel.app/api/news',
-  );
-
+export const getStaticProps: GetStaticProps = async () => {
+  const res = await axios.get('http://localhost:3000/api/news');
   const data = await res.data;
 
   if (data.code === 200) {
@@ -103,7 +100,7 @@ export const getServerSideProps: GetServerSideProps = async () => {
     return {
       props: {
         redirect: {
-          destination: `/${data.code}`,
+          destination: '/',
           permanent: false,
         },
       },
