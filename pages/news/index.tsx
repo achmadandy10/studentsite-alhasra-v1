@@ -84,7 +84,16 @@ News.getLayout = function getLayout(page: ReactElement, router: Router) {
 export default News;
 
 export const getServerSideProps: GetServerSideProps = async () => {
-  const res = await axios.get('http://localhost:3000/api/news');
+  const prod = process.env.NODE_ENV === 'production';
+
+  const res = await axios.get(
+    `${
+      prod
+        ? 'http://localhost:' + process.env.PORT
+        : process.env.NEXT_PUBLIC_API_URL
+    }/api/news`,
+  );
+
   const data = await res.data;
 
   if (data.code === 200) {
