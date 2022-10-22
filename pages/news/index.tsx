@@ -90,7 +90,7 @@ export const getServerSideProps: GetServerSideProps = async () => {
     `${
       prod
         ? 'http://localhost:' + process.env.PORT
-        : process.env.NEXT_PUBLIC_API_URL
+        : 'https://studentsite-alhasra-v1.vercel.app'
     }/api/news`,
   );
 
