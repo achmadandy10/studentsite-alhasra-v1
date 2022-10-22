@@ -84,14 +84,8 @@ News.getLayout = function getLayout(page: ReactElement, router: Router) {
 export default News;
 
 export const getServerSideProps: GetServerSideProps = async () => {
-  const prod = process.env.NODE_ENV === 'production';
-
   const res = await axios.get(
-    `${
-      prod
-        ? 'http://localhost:' + process.env.PORT
-        : 'https://studentsite-alhasra-v1.vercel.app'
-    }/api/news`,
+    'https://studentsite-alhasra-v1.vercel.app/api/news',
   );
 
   const data = await res.data;
